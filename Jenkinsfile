@@ -29,6 +29,11 @@ pipeline {
             -Dsonar.tests=src/test \
             -Dsonar.projectVersion=$BUILD_NUMBER';
           }
+                  timeout(time: 30, unit: 'MINUTES') {
+                    // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
+                    // true = set pipeline to UNSTABLE, false = don't
+                    waitForQualityGate abortPipeline: true
+                }
         }
 
     }
