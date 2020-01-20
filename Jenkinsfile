@@ -22,11 +22,11 @@ pipeline {
       steps {
 
           withSonarQubeEnv('sonarqube'){
-            sh 'mvn clean verify sonar:sonar
-            -Dsonar.projectName=hello-world-greeting
-            -Dsonar.projectKey=hello-world-greeting
-            -Dsonar.sources=src/main
-            -Dsonar.tests=src/test
+            sh 'mvn clean verify sonar:sonar \
+            -Dsonar.projectName=hello-world-greeting \
+            -Dsonar.projectKey=hello-world-greeting \
+            -Dsonar.sources=src/main \
+            -Dsonar.tests=src/test \
             -Dsonar.projectVersion=$BUILD_NUMBER';
           }
         }
